@@ -1,4 +1,4 @@
-const Member = () => {
+const Member = ({ member }) => {
   return `
     <section class="input-wrap">
         <form>
@@ -6,14 +6,17 @@ const Member = () => {
             <button class="submit">추가</button>
         </form>
         <ul class="users">
-            <li class="user">
-                <span class="user-name">파랑</span>
-                <button class="button button-user-delete">❌</button>
-            </li>
-            <li class="user">
-                <span class="user-name">아벤</span>
-                <button class="button button-user-delete">❌</button>
-            </li>
+            ${member
+              .map(
+                name =>
+                  `
+                <li class="user">
+                    <span class="user-name">${name}</span>
+                    <button class="button button-user-delete">❌</button>
+                </li>
+                `,
+              )
+              .join('')}
         </ul>
     </section>`;
 };

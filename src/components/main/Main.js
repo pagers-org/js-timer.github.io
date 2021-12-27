@@ -9,7 +9,9 @@ import {
   BUTTON_SAVE,
   BUTTON_SETUP,
 } from '../../utils/constants.js';
+import Member from './member/Member.js';
 import Timer from './timer/Timer.js';
+import store from '../../store/index.js';
 import { ONE_SECOND } from '../../utils/constants.js';
 
 export default class Main {
@@ -20,7 +22,27 @@ export default class Main {
 
     this.initTimer();
     this.render();
+    this.bindEvent();
     this.eventHandler();
+  }
+
+  render(props) {
+    const params = props || {
+      ...this.timer,
+      editable: false,
+      timerSet: BUTTON_SETUP,
+      on: BUTTON_PLAY,
+    };
+    this.dom.innerHTML = `
+    ${Timer(params)}
+    ${Member(params)}
+    `;
+  }
+
+  bindEvent() {
+    document.querySelector('.offset').addEventListener('click', () => {
+      document.querySelector('.modal-window').classList.add('visible');
+    });
   }
 
   initTimer(timer) {
@@ -32,16 +54,6 @@ export default class Main {
     };
 
     return this.timer;
-  }
-
-  render(props) {
-    const params = props || {
-      ...this.timer,
-      editable: false,
-      timerSet: BUTTON_SETUP,
-      on: BUTTON_PLAY,
-    };
-    this.dom.innerHTML = Timer(params);
   }
 
   /**
