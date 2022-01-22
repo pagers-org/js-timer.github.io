@@ -3,13 +3,14 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    node: true, // 'module' is not defined. 에러가 발생하면 기입
+    node: true,
+    'cypress/globals': true,
   },
   parserOptions: {
     sourceType: 'module',
   },
   extends: ['eslint:recommended', 'prettier'],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'cypress'],
   rules: {
     'prettier/prettier': [
       'error',
