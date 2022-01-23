@@ -1,21 +1,10 @@
+@import url('./common/index.css');
 @import url('./ui/menu.css');
 @import url('./ui/modal.css');
 
 @font-face {
     font-family: 'DS-DIGII';
     src: url('../fonts/DS-DIGII.TTF');
-}
-
-
-:root {
-    --color-main: steelblue;
-    --color-driver: coral;
-    --color-navigator: gold;
-    --color-input: cornflowerblue;
-    --color-input-focus: darkslateblue;
-    --color-light-grey: #3e3e3e;
-    --color-offset: #19bcb1;
-    --color-offset-hover: #007fff;
 }
 
 * {
@@ -115,7 +104,7 @@ li {
 }
 
 .driver-name {
-    background-color: var(--color-driver);
+    background-color: var(--color-driver-focus);
     border-radius: 1em;
     padding: 0 0.3em;
 }
@@ -128,7 +117,7 @@ li {
 }
 
 .navigator-name {
-    background-color: var(--color-navigator);
+    background-color: var(--color-navigator-focus);
     border-radius: 1em;
     padding: 0 0.3em;
 }

@@ -19,6 +19,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s;
+
+  /* visibility: visible;
+  opacity: 1;
+  pointer-events: auto; */
 }
 
 .visible {
@@ -28,7 +32,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .modal-window>div {
-  width: 400px;
+  /* width: 400px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,9 +70,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 1rem;
 }
 
-.modal-window div:not(:last-of-type) {
+/* .modal-window div:not(:last-of-type) {
   margin-bottom: 15px;
-}
+} */
 
 .btn {
   background-color: white;
@@ -85,45 +89,88 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .input-wrap {
   width: 100%;
-  max-width: 30em;
+  /* max-width: 30em; */
   margin: auto;
   margin-top: 3em;
+  display: flex;
+}
+
+.driver-form {
+  padding-right: 30px;
+}
+
+.navigator-form {
+  padding-left: 30px;
+}
+
+.input-wrap form {
+  display: flex;
+}
+
+.line {
+  width: 0.3px;
+  background-color: var(--color-light-grey);
 }
 
 .input {
   border-style: none;
-  border-bottom: var(--color-input) solid 3px;
   padding-left: 0.3em;
   font-size: 1.2em;
   transition: all 300ms ease-in-out;
 }
 
+#driver-input {
+  border-bottom: var(--color-driver) solid 3px;
+}
+
+#navigator-input {
+  border-bottom: var(--color-navigator) solid 3px;
+}
+
 .input:focus {
   outline: none;
-  border-bottom: var(--color-input-focus) solid 3px;
+}
+
+#driver-input:focus {
+  border-bottom: var(--color-driver-focus) solid 3px;
+}
+
+#navigator-input:focus {
+  border-bottom: var(--color-navigator-focus) solid 3px;
 }
 
 .submit {
   font-size: 1em;
-  padding: 0.4em 1.4em;
+  padding: 0.4em 0.8em;
   border: none;
   border-radius: 3em;
   cursor: pointer;
   transition: all 150ms ease-in-out;
+  background-color: #F6A640;
 }
 
-.users {
-  background-color: lightgray;
+.navigator-users, .driver-user {
+  background-color: var(--color-navigator);
   padding: 1.5em;
   border-radius: 30px;
   margin: auto;
   margin-top: 3em;
 }
 
-.user {
+.driver-user {
+  background-color: var(--color-driver);
   display: flex;
-  margin-bottom: 0.5em;
   justify-content: space-between;
+}
+
+.driver-user .user-name {
+  margin-bottom: 0.5em;
+}
+
+.navigator-user {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
   padding-left: 0.3em;
 }
 
@@ -131,4 +178,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   width: 100%;
   border-bottom: var(--color-light-grey) solid 1px;
   margin-right: 5px;
+}
+
+.button-user-delete {
+  background-color: #A4CDEE;
 }
