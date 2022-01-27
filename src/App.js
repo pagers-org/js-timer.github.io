@@ -1,7 +1,7 @@
-import Menu from './components/menu/Menu.js';
-import Header from './components/header/Header.js';
-import Main from './components/main/Main.js';
-import Modal from './components/modal/Modal.js';
+import Header from './components/Header.js';
+import Menu from './components/Menu.js';
+import Main from './components/Main.js';
+import Modal from './components/Modal.js';
 
 export default class App {
   constructor(dom) {

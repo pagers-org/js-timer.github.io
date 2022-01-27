@@ -9,9 +9,9 @@ import {
   BUTTON_SAVE,
   BUTTON_SETUP,
   ONE_SECOND,
-} from '../../../utils/constants.js';
+} from '../utils/constants.js';
 
-import store from '../../../store/index.js';
+import store from '../store/index.js';
 
 export default class Timer {
   constructor(dom) {
