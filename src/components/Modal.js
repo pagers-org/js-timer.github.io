@@ -1,5 +1,7 @@
-import { $ } from '../utils/functions.js';
+import { $, $$ } from '../utils/functions.js';
 import store from '../store/index.js';
+import { isValidateName } from '../utils/validation.js';
+import { EMPTY } from '../utils/constants.js';
 
 export default class Modal {
   constructor(dom) {
@@ -20,9 +22,10 @@ export default class Modal {
       <section class="input-wrap">
         <div class="driver-form">
           <form>
-              <input id="driver-input" class="input" type="text" placeholder="Input driver">
-              <button class="submit driver-submit">➕</button>
+              <input id="driver-input" class="input" name="driver" type="text" placeholder="Input driver">
+              <button class="submit driver-submit" disabled>➕</button>
           </form>
+          <span id="driver-error" class="validate-error">옳지 못한 입력입니다.</span>
           <div class="driver-user">
           ${
             !driver.name
@@ -37,9 +40,10 @@ export default class Modal {
         <div class="line"></div>
         <div class="navigator-form">
           <form>
-              <input id="navigator-input" class="input" type="text" placeholder="Input navigator">
-              <button class="submit navigator-submit">➕</button>
+              <input id="navigator-input" class="input" name="navigator" type="text" placeholder="Input navigator">
+              <button class="submit navigator-submit" disabled>➕</button>
           </form>
+          <span id="navigator-error" class="validate-error">옳지 못한 입력입니다.</span>
           <ul class="navigator-users">
             ${navigators
               .map(
@@ -65,6 +69,28 @@ export default class Modal {
       $('.modal-window').classList.remove('visible');
       // 값이 변경되었다면 타이머 초기화
       store({ type: 'publish', key: 'Timer' });
+    });
+
+    $$('.input').forEach(item => {
+      item.addEventListener('input', ({ target }) => {
+        const $submitButton = $(`.${target.name}-submit`);
+        const $errorMessage = $(`#${target.name}-error`);
+
+        if (target.value === EMPTY) {
+          $submitButton.setAttribute('disabled', '');
+          $errorMessage.style.opacity = 0;
+          return;
+        }
+
+        if (isValidateName(target.value, this.props)) {
+          $submitButton.removeAttribute('disabled');
+          $errorMessage.style.opacity = 0;
+          return;
+        }
+
+        $submitButton.setAttribute('disabled', '');
+        $errorMessage.style.opacity = 1;
+      });
     });
 
     $('.driver-submit').addEventListener('click', event => {

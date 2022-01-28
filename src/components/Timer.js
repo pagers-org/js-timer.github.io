@@ -12,6 +12,7 @@ import {
 } from '../utils/constants.js';
 
 import store from '../store/index.js';
+import { isValidateTimer } from '../utils/validation.js';
 
 export default class Timer {
   constructor(dom) {
@@ -47,10 +48,12 @@ export default class Timer {
     return `
         <div>
             <section class="timer-wrap">
-                <div class="timer" style="display:${editable ? '' : 'none'}">
+                <div class="timer edit-timer-wrap" style="display:${editable ? '' : 'none'}">
                     <input type="text" id="edit-timer" value="${time}"/>
                 </div>
-                <div class="timer" style="display:${editable ? 'none' : ''}">${time}</div>
+                <div class="timer" id="display-timer" style="display:${
+                  editable ? 'none' : ''
+                }">${time}</div>
                 <div class="timer-buttons">
                     <button class="button">${BUTTON_SWAP}</button>
                     <button id="setup" class="button">${timerSet}</button>
@@ -100,8 +103,13 @@ export default class Timer {
     this.dom.addEventListener('click', ({ target }) => {
       if (target.textContent === BUTTON_SAVE) {
         const { value } = document.querySelector('#edit-timer');
+
+        // 사용자 경험을 높이기 위한 장치
+        // 한 자리 수만 입력.........
+        const parsedValud = isValidateTimer(value);
+
         this.render({
-          ...this.initTimer({ ...this.timer, initTime: value, time: value }),
+          ...this.initTimer({ ...this.timer, initTime: parsedValud, time: parsedValud }),
           editable: false,
           timerSet: BUTTON_SETUP,
           on: BUTTON_PLAY,
