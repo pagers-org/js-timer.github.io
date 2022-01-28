@@ -81,8 +81,7 @@ const closure = () => {
       }
     }
 
-    logAction(result);
-    return result.state;
+    return logAction(result)['state'];
   };
 };
 

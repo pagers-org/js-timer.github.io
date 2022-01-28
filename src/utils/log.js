@@ -9,4 +9,6 @@ export const logAction = result => {
     'color: gray',
     'color: salmon',
   );
+  
+  return result;
 };
