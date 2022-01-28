@@ -1,4 +1,5 @@
 import { getId } from '../utils/functions.js';
+import { logAction } from '../utils/log.js';
 
 // update 함수를 통했을 당시 값은 전달할 수 있지만, 그 전의 값은 가져오지 못한다.
 const closure = () => {
@@ -41,6 +42,10 @@ const closure = () => {
     // 내부 state가 freeze 되어 값 변경이 불가능해짐. 확인 방법은 Object.isFrozen(memory);
     // if (!action) return Object.freeze(memory);
     if (!action) return Object.freeze({ ...memory });
+    let result = {
+      type: action.type,
+      subscribers: `[subscribers] ${action.key} ${Object.keys(subscribers).length}`,
+    };
     switch (action.type) {
       case 'subscribe': {
         subscribers[action.key] = action.listener;
@@ -51,28 +56,32 @@ const closure = () => {
         break;
       }
       case 'addDriver': {
-        console.log(`type: ${action.type}\nmember: ${addDriver(memory, action)}`);
+        result = { ...result, state: addDriver(memory, action) };
         break;
       }
       case 'addNavigator': {
-        console.log(`type: ${action.type}\nmember: ${addNavigator(memory, action)}`);
+        result = { ...result, state: addNavigator(memory, action) };
         break;
       }
       case 'deleteDriver': {
-        console.log(`type: ${action.type}`, deleteDriver(memory));
+        result = { ...result, state: deleteDriver(memory) };
         break;
       }
       case 'deleteNavigator': {
-        console.log(`type: ${action.type}`, deleteNavigator(memory, action));
+        result = { ...result, state: deleteNavigator(memory, action) };
         break;
       }
       case 'swapRole': {
-        const state = swapRole(memory, action);
-        console.log(memory);
-        console.log(`type: ${action.type}`, state);
-        return state;
+        result = { ...result, state: swapRole(memory, action) };
+        break;
+      }
+      default: {
+        result = { ...result, state: memory };
+        break;
       }
     }
+
+    return logAction(result)['state'];
   };
 };
 

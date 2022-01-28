@@ -63,6 +63,21 @@ li {
     font-size: 6em;
 }
 
+#edit-timer {
+    font-family: 'DS-DIGII', sans-serif;
+    font-size: 6rem;
+    width: 3em;
+    height: 80px;
+    text-align: center;
+    color: whitesmoke;
+    border: 5px solid transparent;
+    border-radius: 3em;
+    background-image: linear-gradient(#444444, #444444), linear-gradient(to right, #fbfcb9be, #ffcdf3aa, #65d3ffaa);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 0;
+}
+
 .timer-buttons {
     display: flex;
     justify-content: center;
@@ -95,6 +110,10 @@ li {
 .roles {
     display: flex;
     justify-content: space-between;
+}
+
+.validate-error {
+    opacity: 0;
 }
 
 .driver {
