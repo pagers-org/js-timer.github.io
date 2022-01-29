@@ -1,7 +1,7 @@
-import { $, $$ } from '../utils/functions.js';
-import store from '../store/index.js';
-import { isValidateName } from '../utils/validation.js';
-import { EMPTY } from '../utils/constants.js';
+import { $, $$ } from '../utils/functions';
+import store from '../store';
+import { isValidateName } from '../utils/validation';
+import { EMPTY } from '../utils/constants';
 
 export default class Modal {
   constructor(dom) {

@@ -1,5 +1,5 @@
-import { getId } from '../utils/functions.js';
-import { logAction } from '../utils/log.js';
+import { getId } from '../utils/functions';
+import { logAction } from '../utils/log';
 
 // update 함수를 통했을 당시 값은 전달할 수 있지만, 그 전의 값은 가져오지 못한다.
 const closure = () => {
