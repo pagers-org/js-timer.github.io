@@ -41,6 +41,11 @@ jobs:
           yarn test
           yarn build --if-present
 
+      - name: Git init
+        run: |
+            git config --global user.name '${{github.actor}}'
+            git config --global user.email '${{github.actor}}@users.noreply.github.com'
+
       - name: Git add
         run: git add --force public/
     
