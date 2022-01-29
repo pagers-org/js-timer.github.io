@@ -39,7 +39,7 @@ jobs:
         run: |
           yarn install
           yarn test
-          yarn build --if-present
+          yarn build
 
       - name: Git add
         run: git add --force public/
