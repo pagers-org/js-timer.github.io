@@ -1,4 +1,3 @@
-// const { URL } = require('./src/constants/index.js');
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -13,7 +12,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   target: ['es5', 'web'],
-  entry: './target/index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
@@ -21,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, './target/index.html'),
+      template: path.resolve(__dirname, 'index.html'),
       favicon: './favicon.ico',
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -32,6 +31,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(png|svg)$/,
+        use: { loader: 'url-loader' },
       },
       {
         test: /\.(woff|woff2|eot)$/,
