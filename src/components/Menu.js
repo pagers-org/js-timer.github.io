@@ -1,3 +1,7 @@
+import Setting from '../../assets/icons/setting-two-svgrepo-com.svg';
+import DarkMode from '../../assets/icons/dark-mode-svgrepo-com.svg';
+import Reset from '../../assets/icons/effects-svgrepo-com.svg';
+
 export default class Menu {
   constructor(dom) {
     this.dom = dom;
@@ -11,19 +15,19 @@ export default class Menu {
     <div class="pie pie1">
       <a href="#open-modal">
           <div class="pie-color pie-color1">
-              <img class="setting" src="./assets/icons/setting-two-svgrepo-com.svg" width="100"
+              <img class="setting" src="${Setting}" width="100"
                   height="100"></img>
           </div>
       </a>
     </div>
     <div class="pie pie2">
         <div class="pie-color pie-color2">
-            <img class="dark-mode" src="./assets/icons/dark-mode-svgrepo-com.svg" width="100" height="100"></img>
+            <img class="dark-mode" src="${DarkMode}" width="100" height="100"></img>
         </div>
     </div>
     <div class="pie pie3">
         <div class="pie-color pie-color3">
-            <img class="reset-app" src="./assets/icons/effects-svgrepo-com.svg" width="100" height="100"></img>
+            <img class="reset-app" src="${Reset}" width="100" height="100"></img>
         </div>
     </div>
     <div class="menu">

@@ -13,13 +13,19 @@
 
 html {
     width: 100vw;
+    min-width: 600px;
     height: 100vh;
+    min-height: 600px;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 70vw;
+    height: 90%;
     margin: auto;
-    /* text-align: center; */
 }
 
 ul {

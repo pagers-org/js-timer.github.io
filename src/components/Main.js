@@ -1,5 +1,5 @@
-import Timer from './Timer.js';
-import { $ } from '../utils/functions.js';
+import Timer from './Timer';
+import { $ } from '../utils/functions';
 
 export default class Main {
   constructor(dom) {
