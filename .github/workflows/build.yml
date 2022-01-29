@@ -28,10 +28,11 @@ jobs:
     # run 개념은 명령어를 실행한다. 셸 스크립트와 동일하다.
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Timer Package Setup ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       # npm ci는 npm install과 같은 기능을 수행한다.
       # --if-present 옵션은 npm 스크립트가 존재할 때만 실행시키라는 의미이다.
       # 만약 build 스크립트가 없는 경우, 오류 없이 지나간다.
@@ -40,4 +41,15 @@ jobs:
           npm ci
           npm run test
           npm run build --if-present
-           
+
+      - name: Git add
+        run: git add --force public/
+    
+      - name: Git commit
+        run: git commit -m "publish"
+
+      - name: Push public to branch
+        run: |
+            git subtree split --branch public --prefix public/
+            git push -f origin public:public
+            git branch -D public
