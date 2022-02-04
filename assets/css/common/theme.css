@@ -1,0 +1,31 @@
+.dark {
+  background-color: black !important;
+}
+
+.dark .menu {
+  background-color: black !important;
+  box-shadow: 0 0 4px 5px rgb(255 255 255);
+}
+
+.dark .menu>svg>g {
+  stroke: white !important;
+}
+
+.dark .timer {
+  color: white !important;
+}
+
+.dark .button {
+  background-color: dimgray;
+  color: white;
+}
+
+.dark .driver-name{
+  color: white;
+  background-color: #ad2e00;
+}
+
+.dark .navigator-name {
+  color: white;
+  background-color: #b4b100;
+}
