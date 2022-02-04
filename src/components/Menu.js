@@ -1,6 +1,8 @@
 import Setting from '../../assets/icons/setting-two-svgrepo-com.svg';
 import DarkMode from '../../assets/icons/dark-mode-svgrepo-com.svg';
 import Reset from '../../assets/icons/effects-svgrepo-com.svg';
+import store from '../store';
+import { $ } from '../utils/functions';
 
 export default class Menu {
   constructor(dom) {
@@ -51,6 +53,12 @@ export default class Menu {
     ['.pie1', '.pie2', '.pie3'].forEach(selector => {
       document.querySelector(selector).addEventListener('click', () => {
         document.body.classList.remove('active');
+        if (selector === '.pie2') {
+          const { mode } = store({ type: 'changeMode' });
+          const $html = $('html');
+          if (mode === 'light') $html.classList.remove('dark');
+          else $html.classList.add('dark');
+        }
       });
     });
   }
