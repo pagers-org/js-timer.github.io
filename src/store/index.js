@@ -7,6 +7,7 @@ const closure = () => {
   const memory = {
     driver: { id: '0', name: '파랑' },
     navigators: [{ id: '0', name: '아벤' }],
+    mode: 'light',
   };
 
   const subscribers = {};
@@ -35,6 +36,11 @@ const closure = () => {
   const swapRole = (state, { driver, navigator }) => {
     state.driver = navigator;
     state.navigators = [...state.navigators.slice(1), driver];
+    return state;
+  };
+
+  const changeMode = state => {
+    state.mode = state.mode == 'light' ? 'dark' : 'light';
     return state;
   };
 
@@ -73,6 +79,10 @@ const closure = () => {
       }
       case 'swapRole': {
         result = { ...result, state: swapRole(memory, action) };
+        break;
+      }
+      case 'changeMode': {
+        result = { ...result, state: changeMode(memory) };
         break;
       }
       default: {
